@@ -1,165 +1,98 @@
-# 📚 Avaliação DW3 - MiniDevBlog React + Firebase + Deploy [Nunca se Esqueça de Montar a Build Final do Deploy]
+# 🚀 Mini DevBlog
 
-## 🏛️ Contextualização
-
-"Nos bons tempos", o desenvolvedor que sabia organizar rotas, proteger páginas e ainda subir uma aplicação pública era considerado digno da espada de um verdadeiro arquiteto de sistemas. Hoje, você terá essa oportunidade.
-
-Você irá concluir a construção de um **Mini DevBlog** utilizando **React**, **Firebase Authentication** e **Deploy Automatizado**, tomando como base:
-
-> 🔗 [Repositório Inicial (Incompleto) - avalicao-lifedev](https://github.com/victoricoma/avaliacao-lifedev.git)
-
-Inspirando-se na estrutura de:
-
-> 🔗 [Exemplo Estruturado - dw3_react_minidevblog](https://github.com/victoricoma/dw3_react_minidevblog)
+O **Mini DevBlog** é uma plataforma moderna voltada para desenvolvedores que desejam compartilhar experiências, conhecimentos e histórias sobre sua jornada na programação. A proposta é fomentar uma comunidade colaborativa onde todos possam aprender, evoluir e se conectar.
 
 ---
 
-## 🛠️ Tarefas a serem realizadas
+## ✨ Funcionalidades
 
-### 1. Preparação do Ambiente
-
-- Faça o **fork** do repositório de avaliação.
-- Crie uma **branch** chamada:  
-  `avaliacaodw-seulogindogithub`
-- Exemplo: `avaliacaodw-joaosilva`
-
----
-
-### 2. Construção de Rotas Principais
-
-Implemente as seguintes **rotas** usando `react-router-dom`:
-
-| Rota | Função | Proteção |
-|:----|:------|:------|
-| `/login` | Página de login | Acesso público |
-| `/dashboard` | Listagem de posts | Acesso protegido (usuário logado) |
-| `/post/:id` | Visualização individual de post | Acesso protegido |
-| `/post/new` | Criação de novo post | Acesso protegido |
+- ✅ **Criação de Postagens**: Adicione postagens com título, conteúdo, imagem e tags.
+- 🔍 **Busca Inteligente**: Pesquise postagens por palavras-chave ou tags.
+- 📊 **Dashboard Intuitivo**: Gerencie facilmente suas postagens em uma interface simples e eficiente.
+- 🔐 **Autenticação com Google**: Login seguro e prático usando sua conta Google.
+- 🛡️ **Proteção de Rotas**: Áreas restritas (como o Dashboard) acessíveis apenas por usuários autenticados.
 
 ---
 
-### 3. Construção da Dashboard
+## 🛠️ Tecnologias Utilizadas
 
-- Crie uma página `Dashboard.jsx`:
-  - Liste **todos os posts** em cards ou em lista.
-  - Cada card deve ter:
-    - Título do post
-    - Autor (se possível)
-    - Link para visualizar o post completo (`/post/:id`).
-
-- Utilize **Hooks** para buscar os dados:
-  - `useEffect` para puxar os posts ao carregar a página.
-  - `useState` para armazenar a lista de posts.
+- **React** – Criação da interface de forma reativa e escalável.  
+- **Vite** – Ferramenta rápida para desenvolvimento e build.  
+- **Firebase** – Backend com autenticação, Firestore (banco de dados) e hospedagem.  
+- **Tailwind CSS** – Estilização moderna, responsiva e utilitária.  
+- **React Router** – Navegação eficiente entre páginas.  
 
 ---
 
-### 4. Construção da Página de Criação de Postagem
+## 🗂️ Estrutura do Projeto
 
-- Crie uma página `CreatePost.jsx`:
-  - Formulário com campos para:
-    - Título
-    - Conteúdo
-  - Botão **Salvar**.
-  - Ao enviar, crie o novo post no **Firebase** ou no contexto/local que esteja usando para simulação.
+### 🧭 Páginas Principais
 
-- Dica prática:
-  - Use `useState` para controlar os campos do formulário.
-  - Use `useContext` ou chamadas diretas para atualizar a lista de posts ao salvar.
+- **Home** – Página inicial com as postagens públicas mais recentes.  
+- **Sobre** – Informações gerais sobre o projeto e seus objetivos.  
+- **Dashboard** – Gerencie suas postagens (acesso restrito a usuários autenticados).  
+- **Login / Registro** – Acesso e criação de conta via Google.
 
----
+### 🧩 Componentes Importantes
 
-### 5. Sistema de Login (Firebase OAuth)
+- **`NoPosts`** – Mensagem amigável exibida quando não há postagens no Dashboard.  
+- **`PostRow`** – Exibe cada postagem com opções de edição e exclusão.  
+- **`LoadingScreen`** – Tela de carregamento exibida durante operações assíncronas.
 
-- Implemente o **login via Firebase Authentication**.
-- Métodos obrigatórios:
-  - Login com **Google** (padrão).
-- Mantenha conexão com o Firebase durante a sessão do usuário.
+### 🧪 Hooks Personalizados
 
----
+- **`useFetchDocuments`** – Busca documentos do Firestore com base em filtros.  
+- **`useDeleteDocument`** – Exclui documentos do Firestore de forma segura.
 
-### 6. Controle de Acesso (Proteção de Rotas)
+### 🔐 Contexto de Autenticação
 
-- Utilize um `PrivateRoute` (ou configuração equivalente) para proteger:
-  - `/dashboard`
-  - `/post/:id`
-  - `/post/new`
-
-- Usuário **não logado** deve ser redirecionado para `/login`.
+Utilizamos `AuthContext` para controlar o estado de autenticação do usuário e proteger rotas privadas dentro da aplicação.
 
 ---
 
-### 7. Menu de Navegação Condicional
+## ▶️ Como Executar o Projeto
 
-- Ajuste o menu para:
-  - Exibir apenas **Login** quando o usuário não estiver autenticado.
-  - Exibir **Dashboard**, **Novo Post**, **Logout** quando estiver logado.
+### 🔧 Pré-requisitos
 
----
+- Node.js instalado.  
+- Conta no [Firebase](https://firebase.google.com/) com Firestore e autenticação via Google configurados.
 
-### 8. Configuração de Pipeline e Deploy
+### 📋 Passo a Passo
 
-- Configure o deploy automático usando **GitHub Actions** ou plataformas como **Vercel**, **Netlify** ou **Firebase Hosting**:
-  - Após o push para a branch de entrega, o sistema deve ser publicado automaticamente.
-  - Deve ser possível acessar o sistema por link público.
+1. **Clone o repositório:**
 
----
+```bash
+git clone https://github.com/seu-usuario/mini-devblog.git
+cd mini-devblog
+```
 
-## ⚙️ Dicas Técnicas para os Hooks
+2. **Instale as dependências:**
 
-- **useState**:
-  ```javascript
-  const [posts, setPosts] = useState([]);
-  ```
+```bash
+npm install
+```
 
-- **useEffect** para buscar posts:
-  ```javascript
-  useEffect(() => {
-    // Função para buscar posts aqui
-  }, []);
-  ```
+3. **Configure as variáveis de ambiente no arquivo `.env`:**
 
-- **useContext** para controle global de autenticação:
-  - Criar um `AuthContext`.
-  - Fornecer informações de login para todo o app.
+```
+VITE_FIREBASE_API_KEY=your_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+```
 
-- **Redirecionamento Condicional**:
-  ```javascript
-  if (!user) {
-    return <Navigate to="/login" />;
-  }
-  ```
+4. **Execute o projeto em ambiente de desenvolvimento:**
 
-- **Proteção de Rotas** usando `Outlet`:
-  ```javascript
-  const PrivateRoute = () => {
-    return user ? <Outlet /> : <Navigate to="/login" />;
-  }
-  ```
+```bash
+npm run dev
+```
 
 ---
 
-## 📌 Entrega
+## 👨‍💻 Sobre o Projeto
 
-Você deve entregar:
+Este projeto foi desenvolvido como parte da **avaliação da disciplina DW3 - Life Dev**, com o objetivo de aplicar conceitos de front-end moderno, autenticação e integração com serviços em nuvem.
 
-1. **Link da Branch** `avaliacaodw-seulogindogithub`
-2. **Link do Deploy Funcionando** para teste público
-3. **Pipeline CodeQL** rodando no GitHub Actions
-
----
-
-## 📅 Avaliação
-
-Serão avaliados:
-
-- Organização e Estrutura do Código
-- Funcionamento das Rotas e Autenticação
-- Funcionalidade da Dashboard e Criação de Postagem
-- Deploy público funcional
-- Qualidade geral do repositório e uso correto de boas práticas
-
----
-
-# 🚀 Bons estudos e boa sorte!  
-*"O código que você escreve hoje é a carta que você envia para o seu eu do futuro. Capriche."* 📜🚀
-
+> Criado com 💙 por IHuGoWI
