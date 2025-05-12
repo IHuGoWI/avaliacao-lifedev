@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
-.container{
+/* .container{
   min-height: 60vh;
   margin-bottom: 5em;
-}
+} */
 
-.load{
+/* .load{
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-}
+} */
