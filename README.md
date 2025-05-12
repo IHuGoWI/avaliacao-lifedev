@@ -95,5 +95,4 @@ npm run dev
 
 Este projeto foi desenvolvido como parte da **avaliação da disciplina DW3 - Life Dev**, com o objetivo de aplicar conceitos de front-end moderno, autenticação e integração com serviços em nuvem.
 
-> © 2025 Icoma Education  
 > Criado com 💙 por IHuGoWI
